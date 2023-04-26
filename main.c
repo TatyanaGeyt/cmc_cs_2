@@ -30,7 +30,7 @@ float root(float (*f)(float), float (*g)(float), float a, float b, float eps){
         return x;
     if (y * y_a >= 0)
         return root(f, g, x, b, eps);                                           // иначе рекурсивно запускаем функцию дальше, заменяя один из концов отрезка на х
-    if (y * y_b >= 0)
+    else if (y * y_b >= 0)
         return root(f, g, a, x, eps);                                           // в зависимости от знака значения функции в точке х
     return 0.0;
 }
