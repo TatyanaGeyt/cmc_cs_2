@@ -77,6 +77,22 @@ int main(void)
     
     float s = s1 - s2 - s3;
     printf("\nAnswer: %.3f\n",s);
+    
+        x1 = root(f1, f2, a, b, eps1);
+    x2 = root(f2, f4, a, b, eps1);
+    x3 = root(f4, f1, a, b, eps1);
+
+    printf("\nIntersection of functions:\n >> f1 f2: %.3f\n >> f2 f4: %.3f\n >> f1 f4: %.3f\n", x1, x2, x3);
+
+    s1 = integral(f1, x1, x3, eps2);
+    s2 = integral(f2, x1, x2, eps2);
+    s3 = integral(f4, x2, x3, eps2);
+
+    printf("\nIntegrals:\n >> f1 [ %.3f ; %.3f ] : %.3f\n >> f2 [ %.3f ; %.3f ] : %.3f\n >> f4 [ %.3f ; %.3f ] : %.3f\n", x3, x1, s1, x2, x1, s2, x3, x2, s3);
+
+    s = s1 - s2 - s3;
+    printf("\nAnswer: %.3f\n",s);
+    
     return 0;
 }
 
