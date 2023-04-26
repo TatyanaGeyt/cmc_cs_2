@@ -3,30 +3,27 @@
 #include <math.h>
 
 float f1(float x){
-    return exp(-x) + 3;
+    return x;
 }
 float f2(float x){
     return 2*x - 2;
 }
 float f3(float x){
-    float e = 0.000001;
-    if (!(x < e && x > -e))
-        return 1/x;
-    return 1/0.000001;
+    return 3*x-4;
 }
 
 float find_x0(float x1, float y1, float x2, float y2){
     return (x1*(y2 - y1) - y1*(x2 - x1))/(y2 - y1);
 }
 float root(float (*f)(float), float (*g)(float), float a, float b, float eps){
-    double y_a = f(a) - g(a);                                                    // значение в точке а
-    double y_b = f(b) - g(b);                                                    // значение в точке b
-    double x = find_x0(a, y_a, b, y_b);                                          // находим точку пересечения хорды с осью Ох
-    double y = f(x) - g(x);                                                      // находим значение функции (которая является разностью функций f и g) в этой точке
+    float y_a = f(a) - g(a);                                                    // значение в точке а
+    float y_b = f(b) - g(b);                                                    // значение в точке b
+    float x = find_x0(a, y_a, b, y_b);                                          // находим точку пересечения хорды с осью Ох
+    float y = f(x) - g(x);                                                      // находим значение функции (которая является разностью функций f и g) в этой точке
 
-    double y_eps1 = f(x + eps) - g(x + eps);                                     // находим значения функции в eps-окрестности точки x
-    double y_eps2 = f(x - eps) - g(x - eps);
-    if (y * y_eps1 < 0 || y * y_eps2 < 0)                                       // если нашли корень с нужной степенью точности, выходим из функции
+    float y_eps1 = f(x + eps) - g(x + eps);                                     // находим значения функции в eps-окрестности точки x
+    float y_eps2 = f(x - eps) - g(x - eps);
+    if (y * y_eps1 <= 0 || y * y_eps2 <= 0)                                       // если нашли корень с нужной степенью точности, выходим из функции
         return x;
     if (y * y_a >= 0)
         return root(f, g, x, b, eps);                                           // иначе рекурсивно запускаем функцию дальше, заменяя один из концов отрезка на х
