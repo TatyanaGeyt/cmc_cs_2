@@ -19,13 +19,13 @@ float find_x0(float x1, float y1, float x2, float y2){
     return (x1*(y2 - y1) - y1*(x2 - x1))/(y2 - y1);
 }
 float root(float (*f)(float), float (*g)(float), float a, float b, float eps){
-    float y_a = f(a) - g(a);                                                    // значение в точке а
-    float y_b = f(b) - g(b);                                                    // значение в точке b
-    float x = find_x0(a, y_a, b, y_b);                                          // находим точку пересечения хорды с осью Ох
-    float y = f(x) - g(x);                                                      // находим значение функции (которая является разностью функций f и g) в этой точке
+    double y_a = f(a) - g(a);                                                    // значение в точке а
+    double y_b = f(b) - g(b);                                                    // значение в точке b
+    double x = find_x0(a, y_a, b, y_b);                                          // находим точку пересечения хорды с осью Ох
+    double y = f(x) - g(x);                                                      // находим значение функции (которая является разностью функций f и g) в этой точке
 
-    float y_eps1 = f(x + eps) - g(x + eps);                                     // находим значения функции в eps-окрестности точки x
-    float y_eps2 = f(x - eps) - g(x - eps);
+    double y_eps1 = f(x + eps) - g(x + eps);                                     // находим значения функции в eps-окрестности точки x
+    double y_eps2 = f(x - eps) - g(x - eps);
     if (y * y_eps1 < 0 || y * y_eps2 < 0)                                       // если нашли корень с нужной степенью точности, выходим из функции
         return x;
     if (y * y_a >= 0)
@@ -76,8 +76,8 @@ int main(void)
     float s2 = integral(f2, x1, x2, eps2);
     float s3 = integral(f3, x2, x3, eps2);
 
-    printf("\nIntegrals:\n >> f1  [ %.3f ; %.3f ] : %.3f\n >> f2 [ %.3f ; %.3f ] : %.3f\n >> f3 [ %.3f ; %.3f ] : %.3f\n", x1, x3, s1, x1, x2, s2, x2, x1, s3);
-
+    printf("\nIntegrals:\n >> f1 [ %.3f ; %.3f ] : %.3f\n >> f2 [ %.3f ; %.3f ] : %.3f\n >> f3 [ %.3f ; %.3f ] : %.3f\n", x3, x1, s1, x2, x1, s2, x3, x2, s3);
+    
     float s = s1 - s2 - s3;
     printf("\nAnswer: %.3f\n",s);
     return 0;
