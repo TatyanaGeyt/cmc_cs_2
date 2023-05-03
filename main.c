@@ -106,6 +106,10 @@ int main(int argc, char** argv){
             float a1 = strtod(argv[i + 2], 0);
             float b1 = strtod(argv[i + 3], 0);
             i += 3;
+            if (findex == 3 && a1*b1 = 0){
+                printf(" Error !!!\n");
+                continue;
+            }
             printf(" >> area of f%d on segment [ %lf, %lf ] : %.3lf\n", findex, a1, b1, integral(*(f[findex - 1]), a1, b1, eps2));
         }
         else if (strcmp(argv[i], "-answer") == 0){
