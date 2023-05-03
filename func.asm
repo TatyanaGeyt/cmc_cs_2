@@ -1,7 +1,5 @@
 extern exp, printf
 section .data
-    format db "%f", 0
-    x dq 1.0
     const1 dq -1.0
     const2 dq 3.0
     const3 dq 2.0
