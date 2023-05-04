@@ -106,9 +106,9 @@ int main(int argc, char** argv){
             float a1 = strtod(argv[i + 2], 0);
             float b1 = strtod(argv[i + 3], 0);
             i += 3;                                                                    // сдвигаем счётчик на 3, т.к. приняли ещё 3 дополнительных аргемента
-            if (findex == 3 && a1*b1 <= 0){                                             // если пользователь захочет посчитать интеграл для функции 1/х и возникнет деление на 0
-                printf(" !!! Error in -integral : division by 0\n make sure the segment is correct\n\n");                                                // выведем ошибку и перейдём к следующей итерации цикла
-                continue;
+            if (findex == 3 && a1*b1 <= 0){                                            // если пользователь захочет посчитать интеграл для функции 1/х и возникнет деление на 0
+                printf(" !!! Error in -integral : division by 0\n make sure the segment is correct\n\n");      
+                continue;                                                             // выведем ошибку и перейдём к следующей итерации цикла
             }
             printf(" >> area of f%d on segment [ %.3lf, %.3lf ] : %.3lf\n", findex, a1, b1, integral(*(f[findex - 1]), a1, b1, eps2));
         }
