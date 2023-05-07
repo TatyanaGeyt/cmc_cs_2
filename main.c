@@ -86,6 +86,7 @@ int main(int argc, char** argv){
             printf(" valid command line keys:\n");
             printf(" >> -root: print all intersections\n >> -rootc: print number of iterations\n");
             printf(" >> -integral [ 1 - 3 ] [ a ] [ b ] : print the area under the graph\n    of one of the functions [ 1 - 3 ] on the segment [ a, b ]\n");
+            printf(" >> -areas: print area of each function of the task\n");
             printf(" >> -answer: print final answer of the task\n");
             printf(" functions:\n >> 1: e^(-x) + 3\n >> 2: 2x - 2\n >> 3: 1/x\n");
         }
@@ -97,9 +98,9 @@ int main(int argc, char** argv){
         }
         else if (strcmp(argv[i], "-rootc") == 0){
             printf(" count:\n");
-            printf(" >> f1 and f2: %d\n", c1);
-            printf(" >> f2 and f3: %d\n", c2);
-            printf(" >> f3 and f1: %d\n", c3);
+            printf(" >> f1 and f2 : %d\n", c1);
+            printf(" >> f2 and f3 : %d\n", c2);
+            printf(" >> f3 and f1 : %d\n", c3);
         }
         else if (strcmp(argv[i], "-integral") == 0){
             int findex = argv[i + 1][0] - '0';
@@ -115,7 +116,9 @@ int main(int argc, char** argv){
         else if (strcmp(argv[i], "-answer") == 0){
             printf(" answer:\n >> %.3lf\n", s);
         }
-        
+        else{
+            printf(" Error: unidentified request : %s\n make sure the key is correct. Try again :)\n", argv[i]);
+        }
         i++;
     }
 
